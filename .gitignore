@@ -1,0 +1,4 @@
+reviewbot
+.*.swp
+coverage.out
+*.gz
