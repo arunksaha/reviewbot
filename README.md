@@ -35,15 +35,17 @@ Develop a rudimentary chatbot based on Telegram where users can submit product r
 # Build
 
 ## Local
-
+```
   $ make build
   go build -o reviewbot
-
+```
 ## Docker
 
+```
   $ make docker-build
   docker build -t reviewbot .
   <long output trimmed>
+```
 
 # Execution
 
@@ -51,11 +53,15 @@ In the following, <token> refers to the Telegram token for the reviewbot account
 
 ## Local
 
+```
   $ TOKEN=<token> ./reviewbot
+```
 
 ## Docker
 
+```
   $ docker run -e TOKEN='<token>' reviewbot
+```
 
 ### DockerHub
 
@@ -69,6 +75,7 @@ A version of the image is available at dockerhub as per the following.
 
 There are a bunch of unit tests at reviewbot_lib_test.go.
 
+```
   $ make test # go test -v
   === RUN   TestUserSaveReview1
   --- PASS: TestUserSaveReview1 (0.00s)
@@ -89,15 +96,19 @@ There are a bunch of unit tests at reviewbot_lib_test.go.
   === RUN   TestRbHandleText
   --- PASS: TestRbHandleText (0.00s)
   PASS
+```
 
 ## Test Coverage
 
 Collect the test coverage.
 
+```
   $ go test -v -coverprofile=coverage.out
+```
 
 View the test coverage
 
+```
   $ go tool cover -func=coverage.out 
   reviewbot/reviewbot_lib.go:33:	NewReviewBot		100.0%
   reviewbot/reviewbot_lib.go:45:	composeMenu		100.0%
@@ -120,18 +131,25 @@ View the test coverage
   reviewbot/reviewbot_main.go:70:	recvMessage		0.0%
   reviewbot/reviewbot_main.go:87:	sendMessage		0.0%
   total:							(statements)		61.0%
+```
 
 The test coverage can also viewed in a browser as the following.
 
+```
   $ go tool cover -html=coverage.out
+```
 
 The collection and command-line viewing can be done together as the following.
 
+```
   $ make test-coverage
+```
 
 # Static Analysis
 
+```
   $ make check
+```
 
 # Future Work
   
